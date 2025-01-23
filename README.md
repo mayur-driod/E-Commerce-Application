@@ -50,3 +50,6 @@ At this stage, we’ve laid the foundation for the backend by setting up the dir
   - **`utils/`**: Stores utility functions, including the `ErrorHandler.js` to manage application-level errors.
 
 In the **`index.js`** file, we imported Express, initialized the app, and set up basic routing and server listening. We can now handle HTTP requests through `app.get` and set the server to listen for incoming requests on the specified port.
+
+### **Milestone 4: Backend Structure and Initial Setup**
+creating user model, user controller and Multer support
