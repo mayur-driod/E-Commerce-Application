@@ -1,12 +1,52 @@
-# E-Commerce-Application
-Follow Along Project for Backend Web Development
+# E-Commerce Application: Backend Web Development Project
 
-# Milestone 1: Project Overview
+### **Milestone 1: Project Overview**
 
-**Breif Descriptions:**
-This will be a E-commerce website that uses the MERN stack which stands for MongoDB, Express, React and finally Node.js. Here we will use React's CRA for frontend web development, MongoDB for the database or storage and Node.js and express for the backend of the platform. Here we will develop things for the client side which is front end as well as Server side which is backend. The website will use MongoDB which is a non-SQL based database structure which uses objects to store all the data. We will use CRA react to develop the frontend. The website will also have multiple pages including the login page, sign up page, forgot password page, Home page, product display page, cart page, address page, payment page and also confirmation page, orders page, help page, error page. We would also have in detail pages of each product.
+**Brief Overview:**
+This project involves developing a fully functional e-commerce platform utilizing the MERN stack — MongoDB, Express, React, and Node.js. The application will be built using React's Create React App (CRA) for the front-end, MongoDB as the database solution, and Node.js with Express to handle the back-end server operations.
 
-We will also be making use of API for retrieveing, posting and updating data through commands such as put,post,patch,delete in our platform to have communication between the server and the client. The client will be the user end which would prompt the server to retrieve, make changes or add information to the database. We will be using the mongoose database schema to manage the database. We will also in the later part use bercrypt to encrypt and secure the website.
+The project will be split into two main areas: **Frontend** (client-side) and **Backend** (server-side) development. 
 
-**Milestone 3:** 
-In this milestone We created the folder structure for the backend including the src directory which has config, controllers, database, middleware, model, routers and utils directories inside. In the config directory we made the .env file which has the mongoDB url and the port. The database has a db.js file. The middleware has the error.js and utils has the ErrorHandler.js file. In the index.js file I imported express and called it and assigned it to the variable app. After this I could use the get and listen methods using app.get and app.listen in the index.js. So now I have a server which is setup.
+- **Frontend:** We will be creating various pages for user interaction, including:
+  - **Login Page**
+  - **Sign Up Page**
+  - **Forgot Password Page**
+  - **Home Page**
+  - **Product Display Page**
+  - **Cart Page**
+  - **Address Page**
+  - **Payment Page**
+  - **Order Confirmation Page**
+  - **Order History Page**
+  - **Help Page**
+  - **Error Page**
+  - Detailed Product Pages
+
+- **Backend:** The server will interact with MongoDB, a NoSQL database, to handle data management. We will be using the Mongoose library to interact with the database and define schemas for data consistency. To manage communication between the front-end and the back-end, we will implement APIs that allow for CRUD operations (Create, Read, Update, Delete) using HTTP methods like `POST`, `GET`, `PUT`, `PATCH`, and `DELETE`.
+
+We’ll integrate **bcrypt** for password hashing to ensure user data security, and the entire project will follow best practices for backend structure, focusing on scalability and maintainability.
+
+---
+
+### **Milestone 2: Frontend Development (Login Page)**
+
+For this milestone, we successfully created the **Login Page** using React's Create React App (CRA). To improve the user interface and design, we will be updating the layout with **Tailwind CSS** for styling and incorporate **React-Icons** for intuitive icons. Tailwind CSS will help us streamline the design process with its utility-first classes, making the UI responsive and visually appealing.
+
+The Login Page will include fields for the user's email and password, and will handle form validation, state management, and error handling for incorrect login attempts. React Icons will be utilized for visual appeal and ease of use, enhancing the overall experience.
+
+---
+
+### **Milestone 3: Backend Structure and Initial Setup**
+
+At this stage, we’ve laid the foundation for the backend by setting up the directory structure for the project. The backend is structured as follows:
+
+- **`src/` Directory:** Contains all source code files for the server.
+  - **`config/`**: Stores environment configuration files like `.env` for MongoDB URL and the server port.
+  - **`controllers/`**: Defines functions to handle incoming requests for various routes.
+  - **`database/`**: Contains the MongoDB connection logic in `db.js`.
+  - **`middleware/`**: Houses custom middleware functions such as `error.js` for centralized error handling.
+  - **`model/`**: Contains Mongoose models for the database schema.
+  - **`routers/`**: Defines route handlers for different API endpoints.
+  - **`utils/`**: Stores utility functions, including the `ErrorHandler.js` to manage application-level errors.
+
+In the **`index.js`** file, we imported Express, initialized the app, and set up basic routing and server listening. We can now handle HTTP requests through `app.get` and set the server to listen for incoming requests on the specified port.
