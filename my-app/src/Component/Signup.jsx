@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import Avatar from 'react-avatar';
 import axios from 'axios'
+import { MdAccountCircle } from "react-icons/md";
 
 export const Signup = () => {
   const [sign, setSign] = useState({
@@ -25,17 +26,25 @@ export const Signup = () => {
 
   const handlefilesubmit = (e) => {
     const file = e.target.files[0];
+    console.log("File selected:", file);
 
     if (file) {
       const filepath = URL.createObjectURL(file);
       setAvatar(file);
-      console.log(filepath);
+      console.log("File path:", filepath);
+    } else {
+      console.error("No file selected");
     }
   }
 
   const handlesubmit = async (e) => {
   
     e.preventDefault();
+    if (!avatar) {
+      console.error("No avatar file selected");
+      return;
+    }
+
     const formData = new FormData();
 
     formData.append('Name', sign.Name);
@@ -49,13 +58,12 @@ export const Signup = () => {
       }
     }
 
-    axios.post('http://localhost:3000/create-user', formData, config)
-    .then(response => {
+    try {
+      const response = await axios.post('http://localhost:3000/create-user', formData, config);
       console.log('User created:', response.data);
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('There was an error!', error);
-    });
+    }
   }
 
 
@@ -65,7 +73,7 @@ export const Signup = () => {
         <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900">
           Sign Up!
         </h1>
-        <form className="space-y-6 bg-white p-6 rounded-lg shadow-lg">
+        <form className="space-y-6 bg-white p-6 rounded-lg shadow-lg" onSubmit={handlesubmit}>
           <div className="relative">
             <label htmlFor="Name" className="block text-sm font-medium text-gray-700">Name</label>
             <input
@@ -128,9 +136,9 @@ export const Signup = () => {
             <label htmlFor="avatar" className='block text-sm font-medium text-gray-700'></label>
             <div className='mt-2 flex items-center'>
               <span className='inline-block h-8 w-8 rounded-full overflow-hidden'>
-                {avatar?(<img src={URL.createObjectURL(avatar)}/>):(<Avatar name = 'Foo Bar' className="h-8 w-8"/>)}
+                {avatar?(<img src={URL.createObjectURL(avatar)}/>):(<MdAccountCircle className="h-8 w-8"/>)}
               </span>
-              <label htmlFor="Fileinput" className='ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50'>
+              <label htmlFor="file-input" className='ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50'>
                 <span>Upload your photo</span>
                 <input type="file" name='avatar' id='file-input' accept='.jpg,.png,.jpeg' 
                 onChange={(e)=>handlefilesubmit(e)}
