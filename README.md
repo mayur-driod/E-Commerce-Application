@@ -53,3 +53,15 @@ In the **`index.js`** file, we imported Express, initialized the app, and set up
 
 ### **Milestone 4: Backend Structure and Initial Setup**
 creating user model, user controller and Multer support
+
+### **Milestone 6: Backend Structure and Initial Setup**
+Password Encryption and User Data Storage
+
+Password Hashing:
+
+Implement bcrypt to hash the user's password during the signup process.
+Ensure that the hashed password is stored in the database instead of the plaintext version to enhance security.
+User Data Storage:
+
+Save all relevant user information (e.g., name, email, etc.) in the database.
+Maintain the integrity and confidentiality of the password by ensuring it remains encrypted throughout the process.
