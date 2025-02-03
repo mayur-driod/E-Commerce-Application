@@ -77,7 +77,7 @@ Validate Password:
 Use bcrypt to hash the entered password.
 Compare it with the stored hashed password for authentication.
 
-## Milstone 8
+## Milestone 8
 In this milestone we created two components called Home.jsx and productcard.jsx. product card.jsx is the template used in home.jsx to map out all the products and display them. We also added routes to the home.jsx to display it when the page loads. Based on the number of products the products are mapped and displayed.
 
 ## Milestone 9 - Product Form Creation
