@@ -28,7 +28,7 @@ We’ll integrate **bcrypt** for password hashing to ensure user data security, 
 
 ---
 
-### **Milestone 2: Frontend Development (Login Page)**
+### Milestone 2: Frontend Development (Login Page)**
 
 For this milestone, we successfully created the **Login Page** using React's Create React App (CRA). To improve the user interface and design, we will be updating the layout with **Tailwind CSS** for styling and incorporate **React-Icons** for intuitive icons. Tailwind CSS will help us streamline the design process with its utility-first classes, making the UI responsive and visually appealing.
 
@@ -36,7 +36,7 @@ The Login Page will include fields for the user's email and password, and will h
 
 ---
 
-### **Milestone 3: Backend Structure and Initial Setup**
+### Milestone 3: Backend Structure and Initial Setup**
 
 At this stage, we’ve laid the foundation for the backend by setting up the directory structure for the project. The backend is structured as follows:
 
@@ -51,10 +51,10 @@ At this stage, we’ve laid the foundation for the backend by setting up the dir
 
 In the **`index.js`** file, we imported Express, initialized the app, and set up basic routing and server listening. We can now handle HTTP requests through `app.get` and set the server to listen for incoming requests on the specified port.
 
-### **Milestone 4: Backend Structure and Initial Setup**
+### Milestone 4: Backend Structure and Initial Setup**
 creating user model, user controller and Multer support
 
-### **Milestone 6
+### Milestone 6
 : Backend Structure and Initial Setup**
 Password Encryption and User Data Storage
 
@@ -67,7 +67,7 @@ User Data Storage:
 Save all relevant user information (e.g., name, email, etc.) in the database.
 Maintain the integrity and confidentiality of the password by ensuring it remains encrypted throughout the process.
 
-### **Milestone 7
+### Milestone 7
 Create Login Endpoint:
 
 Accept user credentials (email/username and password).
@@ -77,5 +77,17 @@ Validate Password:
 Use bcrypt to hash the entered password.
 Compare it with the stored hashed password for authentication.
 
-## **Milstone 8
+## Milstone 8
 In this milestone we created two components called Home.jsx and productcard.jsx. product card.jsx is the template used in home.jsx to map out all the products and display them. We also added routes to the home.jsx to display it when the page loads. Based on the number of products the products are mapped and displayed.
+
+## Milestone 9 - Product Form Creation
+
+**Overview**
+
+In this milestone, I created a product form designed to collect all necessary details for new products. This form is essential for inputting data that will be stored in the MongoDB database and displayed on the product page, which was made in the previous milestone.
+
+**Steps Taken**
+
+**Form Development**: I designed and implemented a user-friendly form that allows for the input of multiple products, images along with other relevant product details such as name price description catagory tags... etc.
+
+For this milestone I mostly worked on the frontend of the project. I created a new file named as the productform.jsx.
