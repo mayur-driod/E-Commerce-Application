@@ -8,7 +8,7 @@ require('dotenv').config({  path:'./src/config/.env'});
 
 const secret = process.env.secretkey;
 
-userrouter.post("/create-user",async(req,res)=>{
+userrouter.post("/create-user",upload.single('file'),async(req,res)=>{
     const {name, email, password} = req.body;
     const userEmail = await userModel.findOne({email});
     if (userEmail) {

@@ -91,3 +91,7 @@ In this milestone, I created a product form designed to collect all necessary de
 **Form Development**: I designed and implemented a user-friendly form that allows for the input of multiple products, images along with other relevant product details such as name price description catagory tags... etc.
 
 For this milestone I mostly worked on the frontend of the project. I created a new file named as the productform.jsx.
+
+## Milestone 10
+
+In this milestone I created a schema for products. I made this using a new js file in the Model folder named Productmodel.js. In this I used mongoose to make the schema. I also created a new file called Products.js when I have all the program for initiating a post request that will store all the data in the database. I also used the middleware Multer to process and use the image files that would be uploaded of the product.I have made the neccessary changes to the middleware folder and Index.js to work as intended.
