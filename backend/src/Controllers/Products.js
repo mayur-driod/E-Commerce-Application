@@ -4,11 +4,30 @@ const Productmodel = require('../Model/Productmodel');
 const productrouter=Router();
 
 
-productrouter.get("/",(req,res)=>{      
-    res.send("Product router");
+productrouter.get("/get-router",async (req,res)=>{      
+    try{
+        const productfind = await Productmodel.find();
+        console.log(productfind);
+        const productimage = productfind.map((product)=>{{
+     return{
+            name:product.name,
+            description:product.description,
+            category:product.category,
+            tags:product.tags,
+            price:product.price,
+            stock:product.stock,
+            email:product.email,
+            images:product.images
+        }       
+    }})
+    res.status(200).json({products:productimage});
+    }
+    catch(error){
+        console.error(error);
+    }
 })
 
-productrouter.post("/",productupload.array('files'),async (req,res)=>{
+productrouter.post("/post-product",productupload.array('files'),async (req,res)=>{
     const {name, description, category,tags,price,stock,email}=req.body;
      const images = req.files.map(file => file.path);
      try{

@@ -37,7 +37,7 @@ const handlesubmit = async (e) => {
     })
 
     console.log(formData)
-    const res = await axios.post('http://localhost:5000/product', formData, {headers: {'content-type': 'multipart/form-data'}})
+    const res = await axios.post('http://localhost:3000/product/post-product', formData, {headers: {'content-type': 'multipart/form-data'}})
 
     if (res.status === 200) {
         setEmail('')
