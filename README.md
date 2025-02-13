@@ -102,3 +102,6 @@ In this milestone we bridged the gap between the frontend and the backend of the
 
 ## Milestone 13
 In this milestone we made the endpoint for updation. We use the put request to carry it out. In the frontedn we added the delete and edit buttons for editing and deleteing. Also since it should only be visible to the seller we made a whole new productcard.jsx for sellers.
+
+## Milestone 14
+added an functionality to delete button to the product data and write and backend endpoint to delete the product with the use of ID. Also fixed some of the other bugs I faced which were causing unexpected behaviours and made the routing much more clear.
