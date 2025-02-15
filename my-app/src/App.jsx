@@ -7,6 +7,7 @@ import { Login } from './Component/Login'
 import { Signup } from './Component/Signup'
 import { Home } from './page/Home'
 import Productform from './Component/productform'
+import Navbar from './Component/Navbar'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+    <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
