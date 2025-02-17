@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-export const Productcardforseller = ({ name, image, price, description }) => {
+export const Productcardforseller = ({id, name, image, price, description }) => {
 const [imgIndex,setImgIndex] = useState(0);
 const navigate = useNavigate();
 

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export const Productcard = ({ name, image, price, description }) => {
+export const Productcard = ({ id,name, image, price, description }) => {
 const [imgIndex,setImgIndex] = useState(0);
+const navigate=useNavigate()
 
 useEffect(() => {
   const interval = setInterval(() => {
@@ -29,8 +31,8 @@ useEffect(() => {
       {/* Right Side - Price & Button */}
       <div className="w-full md:w-1/2 flex flex-col justify-between">
         <h1 className="text-2xl font-bold text-gray-900 my-3">{price}</h1>
-        <button className="w-full text-white px-5 py-3 rounded-lg bg-black hover:bg-gray-800 transition-colors">
-          Add to Cart
+        <button className="w-full text-white px-5 py-3 rounded-lg bg-black hover:bg-gray-800 transition-colors"  onClick={()=>navigate(`/product/${id}`)}>
+          More Info
         </button>
       </div>
     </div>
