@@ -108,3 +108,6 @@ added an functionality to delete button to the product data and write and backen
 
 ## Milestone 15
 In this milestone I created a new navbar that renders on all the pages. I added Navlinks for Home, productform, login and signup. I first made a new jsx file called navbar and then created the whole navbar. I also styled it using Tailwind css. I also had other issues that I fixed in home.jsx and styled productform jsx as it had no styling before.
+
+## Milestone 16
+Created singleproduct.jsx. The pages is made to show details about the product. I also routed it and made other minor changes.
