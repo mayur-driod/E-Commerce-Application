@@ -1,8 +1,10 @@
 const {Router}= require('express');
 const { productupload } = require('../../multer');
 const Productmodel = require('../Model/Productmodel');
+const userModel = require("../Model/userModel");
 const productrouter=Router();
 const path = require('path');
+const { userInfo } = require('os');
 
 productrouter.get("/get-product", async (req, res) => {
     try {
@@ -32,6 +34,74 @@ productrouter.get("/get-product", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+
+productrouter.post('/cart',async(req,res)=>{
+    const {email,productid,productname,quantity}=req.body
+
+    try{
+        if(!email){
+            return res.status(404).json({"fill all inputbox"})
+        }
+       
+        if(!mongoose.types.objectId.isValid(productid)){
+            return res.status(400).json({message:'product is not there'})
+        }  
+        if(!quantity&& quantity<0){
+            return res.status(400).json({message:'you dont have neccessary quantity'})
+        }
+
+        const findemail=await userModel.findOne({email:email})
+        if(!findemail){
+            return res.status(440).json({message:{'user does not exist'}})
+        }
+        const findproduct=await Productmodel.findById(productid)
+        if(!findproduct){
+            return res.status(400).json({message:'product is not exist '})
+        }
+
+
+        const cartproductid=await findemail.cart.findIndex((i)=>{
+            return i.productid===productid
+        })
+  
+        if(cartproductid>-1){
+            findemail.cart[cartproductid].quantity+=quantity
+        }
+        else{
+            findemail.cart.push({productid,productname,quantity})
+        }
+
+    }
+    catch(err){
+        console.log("error in cart")
+    }
+})
+
+
+productrouter.get('/getcart',async(req,res)=>{
+     try{
+    const {email}=req.body
+    if(!email){
+        return res.status(400).json({message:"email does not exist"})
+    }
+    const user=await userModel.findOne({email:email}).populate({
+        path:'cart.productid',     
+        model:Productmodel
+    })
+
+    if(!user){
+        return res.status(400).json({message:"user does not exist"})
+    }
+
+    return res.status(400).json({message:"cart is shown successfully"})
+
+}
+catch(err){
+    console.log("error in cart for get req")
+}
+
+})
 
 productrouter.post("/post-product", productupload.array('files'), async (req, res) => {
     const { name, description, category, tags, price, stock, email } = req.body;
