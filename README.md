@@ -111,3 +111,6 @@ In this milestone I created a new navbar that renders on all the pages. I added 
 
 ## Milestone 16
 Created singleproduct.jsx. The pages is made to show details about the product. I also routed it and made other minor changes.
+
+## Milestone 17 & 18
+In these two Milestones we first added the cart details to the schema. Then we also created a post request for sending the details and storing them on the database. We also created an endpoint to receive request from cart page.
