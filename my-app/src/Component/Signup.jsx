@@ -59,7 +59,7 @@ export const Signup = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/create-user', formData, config);
+      const response = await axios.post('http://localhost:3000/auth/create-user', formData, config);
       console.log('User created:', response.data);
     } catch (error) {
       console.error('There was an error!', error);
