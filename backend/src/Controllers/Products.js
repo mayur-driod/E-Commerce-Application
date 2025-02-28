@@ -41,7 +41,7 @@ productrouter.post('/cart',async(req,res)=>{
 
     try{
         if(!email){
-            return res.status(404).json({"fill all inputbox"})
+            return res.status(404).json({message:"fill all inputbox"})
         }
        
         if(!mongoose.types.objectId.isValid(productid)){
@@ -53,7 +53,7 @@ productrouter.post('/cart',async(req,res)=>{
 
         const findemail=await userModel.findOne({email:email})
         if(!findemail){
-            return res.status(440).json({message:{'user does not exist'}})
+            return res.status(440).json({message:'user does not exist'})
         }
         const findproduct=await Productmodel.findById(productid)
         if(!findproduct){

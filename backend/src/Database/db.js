@@ -1,4 +1,5 @@
 const {connect} = require('mongoose');
+
 const connectDB = async (url) => {
     try {
         await connect(url)
@@ -8,4 +9,4 @@ const connectDB = async (url) => {
         console.error(error);
     }
 }
-module.exports = {connectDB};
+module.exports = connectDB;

@@ -1,7 +1,7 @@
 const express = require('express');
 const connectDB = require('./src/Database/db');
 const cors=require('cors')
-const userrouter = require('./src/Controllers/user');
+const userrouter = require('./src/Controllers/users');
 const productrouter = require('./src/Controllers/products');
 const app = express();
 
@@ -25,7 +25,7 @@ app.use('/product', productrouter);
 app.listen(PORT, async () => {
     try {
         await connectDB(url);
-        console.log(`Server is running on port ${PORT}`);
+        console.log(`Server is running on Port:${PORT} Link: http://localhost:${PORT}`);
     } catch (err) {
         console.log(err);
     }
