@@ -31,7 +31,7 @@ useEffect(() => {
       {/* Right Side - Price & Button */}
       <div className="w-full md:w-1/2 flex flex-col justify-between">
         <h1 className="text-2xl font-bold text-gray-900 my-3">{price}</h1>
-        <button className="w-full text-white px-5 py-3 rounded-lg bg-black hover:bg-gray-800 transition-colors"  onClick={()=>navigate(`/product/${id}`)}>
+        <button className="w-full text-white px-5 py-3 rounded-lg bg-black hover:bg-gray-800 transition-colors"  onClick={()=>navigate(`      product/${id}`)}>
           More Info
         </button>
       </div>
