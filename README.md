@@ -125,3 +125,7 @@ In these two Milestones we first added the cart details to the schema. Then we a
 ## Milestone 20
 
 In this milestone we made the /profile endpoint to get the user data and then save it in an object. after this we made the profile.jsx where we will show all the user details.
+
+## Milestone 21
+
+In this Milestone I made the Address.jsx which consists of a form component where users can enter details such as country, state, pincode etc. I made use of usestate hook to store the inputs and then sent it to the backend using axios. Once the data has been sent to the backend the usenavigate hook kicks in and navigates to the /profile page. (Do note that only the frontend has been done in this milestone).
