@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
 const userrouter = Router();
 const AsyncError = require('../Middleware/catchAsyncError');
+const auth = require("../Middleware/auth");
 require('dotenv').config({  path:'./src/config/.env'});
 
 const secret = process.env.secretkey;
@@ -54,7 +55,7 @@ userrouter.post("/login",async(req,res)=>{
                 if(err){
                     return res.status(400).json({message:"Invalid jwt"});
                 }
-
+               res.setHeader("Autherization",`Bearer ${token}`)
                 console.log(token);
                 res.status(200).json({token:token});    
             })
@@ -94,9 +95,40 @@ userrouter.get('/profile',async (req,res) => {
 }
 
 catch(err){
-    res.status(500).json(error:err);
+    res.status(500).json("error":err);
 }
 })
 
+
+
+
+userrouter.post('/add-address',auth, async(req,res)=>{
+
+    try{
+    const {country,
+        city,
+        address1,
+        address2,
+        zipCode,
+        addressType,email}=req.body
+
+        const user=await userModel.find({email:email})
+
+      const newaddress={
+        country,
+        city,
+        address1,
+        address2,
+        zipCode,
+        addressType,
+    }
+
+    user.addresses.push(newaddress)
+    await user.save()
+}
+catch(err){
+    console.log("error in address",err)
+}
+})
 
 module.exports = userrouter;
