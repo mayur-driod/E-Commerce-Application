@@ -6,7 +6,7 @@ const SelectAddress = () => {
     const [addresses, setAddresses] = useState([]);
     const [error, setError] = useState(null); 
     const navigate = useNavigate();
-
+    const email="a@gmail.com"
     useEffect(() => {
         const fetchAddresses = async () => {
             try {
@@ -28,7 +28,7 @@ const SelectAddress = () => {
     }, []);
 
     const handleSelectAddress = (addressId) => {
-        navigate('/order-confirmation');
+        navigate('/order-confirmation',{state:{addressId,email:email}});
     };
 
     return (

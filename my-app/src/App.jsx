@@ -11,6 +11,7 @@ import Singlecard from './Component/Singlecard'
 import Productform from './Component/Productform'
 import Cart from './page/cart'
 import SelectAddress from './page/selectaddress'
+import OrderConfirmation from './page/Oderconfirmation'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/productform" element={<Productform />} />
        <Route path='/product/:id' element={<Singlecard/>}/>
        <Route path='/selectaddress' element={<SelectAddress/>}/>  
+       <Route path='/orderconfirmation' element={<OrderConfirmation/>}/>
        <Route path='*' element={<h1>Not Found</h1>}/> 
       </Routes>
     </>
