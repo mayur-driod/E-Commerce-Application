@@ -105,12 +105,14 @@ catch(err){
 userrouter.post('/add-address',auth, async(req,res)=>{
 
     try{
+
+        const email=req.user
     const {country,
         city,
         address1,
-        address2,
+        address2,   
         zipCode,
-        addressType,email}=req.body
+        addressType}=req.body
 
         const user=await userModel.find({email:email})
 
@@ -130,5 +132,24 @@ catch(err){
     console.log("error in address",err)
 }
 })
+
+userrouter.get('/get-address',auth,async(req,res)=>{
+   const email=req.user
+   try{
+    const user=await userModel.findOne({email:email})
+    if(!user){
+        return res.status(400).json({message:"User not found"})
+    }   
+    res.status(200).json({message:"successfully recieved",user:user.addresses
+    })
+   }
+   catch(err){
+         console.log("error in get address",err)    
+   }
+
+
+
+})
+
 
 module.exports = userrouter;
