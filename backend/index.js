@@ -3,6 +3,7 @@ const connectDB = require('./src/Database/db');
 const cors=require('cors')
 const userrouter = require('./src/Controllers/users');
 const productrouter = require('./src/Controllers/products');
+const orderrouter = require('./src/Controllers/Order');
 const app = express();
 
 app.use(express.json());
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
+app.use('/order',orderrouter)
 app.use('/auth', userrouter);
 app.use('/product', productrouter);
 
