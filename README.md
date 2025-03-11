@@ -145,3 +145,15 @@ First we will display all the products we are ordering
 Next we will display the address user selected to deliver
 We will display the total value of the cart
 We will have an place order button at the bottom.
+
+## Milestone 25
+created an endpoint that will receive the products, user, address details and get the mail of the user using that I will need to retrive the _id of the user.
+For each product the order will be different with same address.
+using order schema I created earlier I have stored the orders details in mongodb order collection.
+
+## Milestone 26
+
+I have created an endpoint that will receive the user mail
+then I will get the mail of the user, using that I will then need to retrive the _id of the user
+Using that _id I will need to then get all the orders of that user
+after this I will Send all the users orders in the response.
