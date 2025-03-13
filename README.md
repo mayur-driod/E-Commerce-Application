@@ -159,4 +159,9 @@ Using that _id I will need to then get all the orders of that user
 after this I will Send all the users orders in the response.
 
 ## Milestone 27
-In this milestone we created a orderpage in the forntend and the component for displaying the order products with button to cancel the order. Using axios patch and array methods I have been able to remove the product from the database when the user clicks on the remove or cancel button in the orderhistory page.
+In this milestone we created a orderpage in the forntend and the component for displaying the order products with button to cancel the order. Using axios patch and array methods I have been able to remove the product from the database when the user clicks on the remove or cancel button in the orderhistory page. followed this guideline: 
+You need to create an my-orders page
+You will send an get request to my-orders endpoint that we created in previous milestone.
+We will send user mail in to endpoint to get all the user orders
+Display all the user orders
+We will add my-orders page in navbar for better navigation.
