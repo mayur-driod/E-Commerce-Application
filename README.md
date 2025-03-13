@@ -157,3 +157,6 @@ I have created an endpoint that will receive the user mail
 then I will get the mail of the user, using that I will then need to retrive the _id of the user
 Using that _id I will need to then get all the orders of that user
 after this I will Send all the users orders in the response.
+
+## Milestone 27
+In this milestone we created a orderpage in the forntend and the component for displaying the order products with button to cancel the order. Using axios patch and array methods I have been able to remove the product from the database when the user clicks on the remove or cancel button in the orderhistory page.
