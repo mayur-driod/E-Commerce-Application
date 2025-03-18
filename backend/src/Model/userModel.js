@@ -38,6 +38,12 @@ const userSchema = new Schema({
       phoneNumber:{
         type: Number,
       },
+
+      role:{
+        type:String,
+        enum:["user","seller","admin"],
+        default:"user"
+      },
       addresses:[
         {
           country: {
