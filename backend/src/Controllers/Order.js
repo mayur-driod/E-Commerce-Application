@@ -28,23 +28,34 @@ orderrouter.post('/place',auth,async(req,res)=>{
             return res.status(404).json({ message: 'User not found.' });
         }
 
-        // Create separate orders for each order item
-        const orderPromises = orderItems.map(async (item) => {
-            const totalAmount = item.price * item.quantity;
-            const order = new orders ({
-                user: user._id,
-                orderItems: [item], // Each order contains a single item
-                shippingAddress,
-                totalAmount,
-            });
-            return order.save();
-        });
+        const totalAmount = orderItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-        const orders = await Promise.all(orderPromises);
+        const paymentData = {
+          intent: "sale",
+          payer: { payment_method: "paypal" },
+          transactions: [{ amount: { total: totalAmount.toFixed(2), currency: "INR" } }],
+          redirect_urls: { return_url: "http://localhost:3000/success", cancel_url: "http://localhost:3000/cancel" },
+        };
+
+paypal.payment.create(paymentData,async(error,payment)=>{
+    const orderPromises = orderItems.map(async (item) => {
+        const order = new orders ({
+            user: user._id,
+            orderItems: [item], // Each order contains a single item
+            shippingAddress,
+            totalAmount,
+            paymentID:payment.id
+        });
+        return order.save();
+    });
+    const orders = await Promise.all(orderPromises);
+})
+        // Create separate orders for each order item
+       
 
         
       const arr=user.cart
-      arr.splice(o,arr.length)
+      arr.splice(0,arr.length)
 
         res.status(201).json({ message: 'Orders placed and cart cleared successfully.', orders });
     } catch (error) {
@@ -98,6 +109,20 @@ orderrouter.patch('/cancel-order/:orderId',auth,rolemiddleware(['user']), async 
     }
 });
 
+orderrouter('/verify-payment',auth,async(req,res)=>{
+    const {orderId}=req.user
+
+    paypal.payment.get(orderId,async(error,payment)=>{
+        if(error){
+            res.status(500).json({message:"there is error"})
+        }
+        if(payment.state!=="approved"){
+            res.status(500).json({message:"cancel payment"})
+        }
+        await orders.findByIdAndUpdate(orderId,{orderStatus:['paid']})  
+    })
+
+})
 
 
 
