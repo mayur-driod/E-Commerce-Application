@@ -4,10 +4,12 @@ const cors=require('cors')
 const userrouter = require('./src/Controllers/users');
 const productrouter = require('./src/Controllers/products');
 const orderrouter = require('./src/Controllers/Order');
+const cookieParser = require('cookie-parser')
 const app = express();
 
 app.use(express.json());
 app.use(cors())
+app.use(cookieParser())
 
 require('dotenv').config({
     path: './src/config/.env'
@@ -23,6 +25,9 @@ app.get('/', (req, res) => {
 app.use('/order',orderrouter)
 app.use('/auth', userrouter);
 app.use('/product', productrouter);
+
+
+
 
 app.listen(PORT, async () => {
     try {
