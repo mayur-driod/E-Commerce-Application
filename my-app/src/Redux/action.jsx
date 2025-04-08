@@ -1,8 +1,5 @@
 import axios from "axios"
 
-
-
-
 export const loginuser=(data)=>async(dispatch)=>{
    const response= await axios.post('http://localhost:3000/user/login',data)
     if(response.status==="200"){
