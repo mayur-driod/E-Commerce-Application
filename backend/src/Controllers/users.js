@@ -4,6 +4,8 @@ const { upload } = require("../../multer");
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
 const userrouter = Router();
+const AsyncError = require('../Middleware/catchAsyncError');
+const auth = require("../Middleware/auth");
 require('dotenv').config({  path:'./src/config/.env'});
 
 const secret = process.env.secretkey;
@@ -53,7 +55,11 @@ userrouter.post("/login",async(req,res)=>{
                 if(err){
                     return res.status(400).json({message:"Invalid jwt"});
                 }
-
+                res.cookie('autherization',token,{
+                    expires:new Date(Date.now() + 900000),
+                    httpOnly:true,
+                    domain:'.localhost.com'
+                })
                 console.log(token);
                 res.status(200).json({token:token});    
             })
@@ -66,5 +72,88 @@ userrouter.post("/login",async(req,res)=>{
     });
 
 })
+
+
+userrouter.get('/profile',async (req,res) => {
+    const {email} = req.query;
+    if(!email){
+        return res.status(400).json({message:"email cannot be empty!"})
+    }
+
+    try{
+    const user = await userModel.findOne({email:email});
+
+    if(!user){
+        return res.status(404).json({message:"The user was not found"});
+    }
+
+    const Users = {
+        name: user.name,
+        email: user.email,
+        phone: user.phoneNumber,
+        image: user.avatarurl,
+        address: user.address
+    }
+
+    res.status(200).json({message:"successfully recieved"});
+}
+
+catch(err){
+    res.status(500).json("error":err);
+}
+})
+
+
+
+
+userrouter.post('/add-address',auth, async(req,res)=>{
+
+    try{
+
+        const email=req.user
+    const {country,
+        city,
+        address1,
+        address2,   
+        zipCode,
+        addressType}=req.body
+
+        const user=await userModel.find({email:email})
+
+      const newaddress={
+        country,
+        city,
+        address1,
+        address2,
+        zipCode,
+        addressType,
+    }
+
+    user.addresses.push(newaddress)
+    await user.save()
+}
+catch(err){
+    console.log("error in address",err)
+}
+})
+
+userrouter.get('/get-address',auth,async(req,res)=>{
+   const email=req.user
+   try{
+    const user=await userModel.findOne({email:email})
+    if(!user){
+        return res.status(400).json({message:"User not found"})
+    }   
+    res.status(200).json({message:"successfully recieved",user:user.addresses
+    })
+   }
+   catch(err){
+         console.log("error in get address",err)    
+   }
+
+
+
+})
+
 
 module.exports = userrouter;
