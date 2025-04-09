@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import NavBar from '../components/auth/nav';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 const OrderConfirmation = () => {
@@ -44,7 +43,7 @@ const OrderConfirmation = () => {
                     _id: item.productId._id,
                     name: item.productId.name,
                     price: item.productId.price,
-                    images: item.productId.images.map(imagePath => http://localhost:3000${imagePath}),
+                    images: item.productId.images.map(imagePath => `http://localhost:3000${imagePath}`),
                     quantity: item.quantity,
                 }));
                 setCartItems(processedCartItems);
@@ -112,7 +111,7 @@ const OrderConfirmation = () => {
                         {selectedAddress ? (
                             <div className='p-4 border rounded-md'>
                                 <p className='font-medium'>
-                                    {selectedAddress.address1}{selectedAddress.address2 ? , ${selectedAddress.address2} : ''}, {selectedAddress.city}, {selectedAddress.state}, {selectedAddress.zipCode}
+                                    {selectedAddress.address1}{selectedAddress.address2 ?` ${selectedAddress.address2} , ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.zipCode}`:` ${selectedAddress.address2} , ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.zipCode}`}
                                 </p>
                                 <p className='text-sm text-gray-600'>{selectedAddress.country}</p>
                                 <p className='text-sm text-gray-500'>Type: {selectedAddress.addressType || 'N/A'}</p>

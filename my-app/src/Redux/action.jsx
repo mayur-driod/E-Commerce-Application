@@ -7,5 +7,3 @@ export const loginuser=(data)=>async(dispatch)=>{
     }
     dispatch({type:"LOGIN_FAILURE",payload:"ther is error"})
 }
-
-

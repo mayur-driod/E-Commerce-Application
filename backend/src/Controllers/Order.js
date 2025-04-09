@@ -1,6 +1,5 @@
 const {Router}=require('express');
 const auth = require('../Middleware/auth');
-const user=require("../model/userModel");
 const orders = require('../Model/OrderSchema');
 const rolemiddleware = require('../Middleware/role');
 const orderrouter=Router()
@@ -109,7 +108,7 @@ orderrouter.patch('/cancel-order/:orderId',auth,rolemiddleware(['user']), async 
     }
 });
 
-orderrouter('/verify-payment',auth,async(req,res)=>{
+orderrouter.post('/verify-payment',auth,async(req,res)=>{
     const {orderId}=req.user
 
     paypal.payment.get(orderId,async(error,payment)=>{

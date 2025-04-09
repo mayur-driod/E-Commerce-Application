@@ -49,7 +49,7 @@ const SelectAddress = () => {
                                     <div>
                                         <p className='font-medium'>
                                             {address.address1}
-                                            {address.address2 ? , ${address.address2} : ''}, {address.city}, {address.state}, {address.zipCode}
+                                            {address.address2 ? `, ${address.address2}, ${address.city}, ${address.state}, ${address.zipCode}`:`, ${address.address2}, ${address.city}, ${address.state}, ${address.zipCode}`}
                                         </p>
                                         <p className='text-sm text-gray-600'>{address.country}</p>
                                         <p className='text-sm text-gray-500'>Type: {address.addressType || 'N/A'}</p>
