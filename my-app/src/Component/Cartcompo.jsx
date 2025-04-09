@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoIosAddCircleOutline  } from "react-icons/io";
-import {  MdOutlineRemoveCircleOutline } from "react-icons/io";
+import {  MdOutlineRemoveCircleOutline } from "react-icons/md";
 export default function CartProduct({ _id, email, images, quantity, price }) {
 
 
@@ -57,7 +57,7 @@ return (
         <div className="h-max w-full p-4 flex justify-between border-b border-neutral-300 bg-neutral-100 rounded-lg">
             <div className="flex flex-col gap-y-2">
                 <img
-                    src={currentImage} // Ensure the URL is correct\
+                    src={currentImage} 
                     alt={name}
                     className="w-32 h-32 object-cover rounded-lg border border-neutral-300"
                 />
@@ -78,7 +78,7 @@ return (
                         <MdOutlineRemoveCircleOutline/>
                     </div>
                 </div>
-            </div>
+            </div>z
             <div className="w-full flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center px-4">
                 <p className="text-lg font-semibold">{name}</p>
                 <p className="text-lg font-semibold">${price*quantityVal}</p>
