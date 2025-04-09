@@ -74,8 +74,8 @@ userrouter.post("/login",async(req,res)=>{
 })
 
 
-userrouter.get('/profile',async (req,res) => {
-    const {email} = req.query;
+userrouter.get('/profile',auth,async (req,res) => {
+    const {email} = req.user;
     if(!email){
         return res.status(400).json({message:"email cannot be empty!"})
     }

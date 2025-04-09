@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai'
 import './login.css'
-import { useDispatch } from 'react-redux'
-import { loginuser } from '../Redux/action'
+// import { useDispatch } from 'react-redux'
+// import { loginuser } from '../Redux/action'
 export const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
